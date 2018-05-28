@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- React的核心库 -->
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <!-- 提供与Dom相关功能 -->
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <!-- 作用是将JSX语法转换为JavaScript语法 -->
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+
+  </head>
+  <body>
+    <!-- react渲染的模板插入的DOM节点容器 -->
+    <div id="container"></div>
+  </body>
+
+  <!-- 在React开发中，使用JSX，跟JS不兼容，在使用JSX的地方要设置type为text/babel -->
+  <!-- babel是一个转换编译器，ES6转成可以在浏览器中运行的代码 -->
+  <!-- react渲染的内容会插入到指定的DOM节点中 -->
+  <script type="text/babel">
+    //react编写区域
+    /*
+      生命周期
+
+      1.组件的生命周期其实可以分为三个状态
+      1.1 Mounting:组件挂载，已插入真实DOM
+        1) componentWillMount
+          组件将要挂载，在render之前执行，但仅执行一次，即使多次重复渲染该组件，或者改变组件state
+        2) componentDidMount
+          组件已经挂载，在render之后执行，同一个组件重复渲染只执行一次
+      1.2 Updating:组件更新，正在被重新渲染
+        1) componentWillReceiveProps(object nextProps)
+          已加载的组件收到新的props之前调用，注意组件初始化渲染时是不会执行的
+        2）shouldComponentUpdate(object nextProps, object nextState)
+          组件判断是否重新渲染时调用，该接口实际上是在组件接收到新的props或者新的state时会立即调用，然后通过返回值判断是否需要重新渲染
+        3）componentWillUpdate
+          组件将要更新
+        4) componentDidUpdate
+          组件已经更新
+      1.3 Unmounting:组件移除，已移出真实DOM
+        1）componentWillUnmount
+          在组件要被移除之前的时间点触发，可以利用该方法来执行一些必要的清理
+
+      2.组件的生命周期可分为四个阶段
+      2.1 创建
+      2.2 实例化
+      2.3 更新
+      2.4 销毁
+
+      3.生命周期中其他方法
+        1）getDefaultProps
+          设置props的默认值
+        2）getInitialState
+          设置state状态初始值
+    */
+    var Demo = React.createClass({
+      /*
+        1.创建阶段
+        流程：
+          只会调用getDefaultProps方法
+      */
+      getDefaultProps: function() {
+        //在创建类的时候被调用，设置this.props的默认值
+        console.log("getDefaultProps");
+        return {};
+      },
+
+      /*
+        2.实例化阶段
+        流程：
+          getInitialState
+          componentWillMount
+          render
+          componentDidMount
+      */
+      getInitialState: function() {
+        //设置this.state的默认值
+        console.log("getInitialState");
+        return null;
+      },
+      componentWillMount: function() {
+        //在render之前调用
+        console.log("componentWillMount");
+      },
+      render: function() {
+        //渲染并返回一个虚拟DOM
+        console.log("render");
+        return (
+          <div>hello react</div>
+        );
+      },
+      componentDidMount: function() {
+        //在render之后调用
+        //在该方法中，react会使用render方法返回的虚拟DOM对象创建真实的DOM结构
+        //可以在这个方法中读取DOM节点
+        console.log("componentDidMount");
+      },
+
+      /*
+        3.更新阶段
+        流程：
+          componentWillReceiveProps
+          shouldComponentUpdate 如果返回值为false，后面三个方法不执行
+          componentWillUpdate
+          render
+          componentDidUpdate
+      */
+      componentWillReceiveProps: function() {
+        console.log("componentWillReceiveProps");
+      },
+      shouldComponentUpdate: function() {
+        //是否需要更新
+        console.log("shouldComponentUpdate");
+        return true;
+      },
+      componentWillUpdate: function() {
+        console.log("componentWillUpdate");
+      },
+      componentDidUpdate: function() {
+        console.log("componentDidUpdate");
+      },
+
+      /*
+        4. 销毁阶段
+        流程：
+          componentWillUnmount
+      */
+      componentWillUnmount: function() {
+        console.log("componentWillUnmount");
+      }
+    });
+
+    ReactDOM.render(
+      <Demo />,
+      document.getElementById("container")
+    );
+
+    // 重新渲染组件
+    ReactDOM.render(
+      <Demo />,
+      document.getElementById("container")
+    );
+
+    //移除组件
+    ReactDOM.unmountComponentAtNode(document.getElementById("container"))
+  </script>
+</html>

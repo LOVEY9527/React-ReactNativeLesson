@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- React的核心库 -->
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <!-- 提供与Dom相关功能 -->
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <!-- 作用是将JSX语法转换为JavaScript语法 -->
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+
+  </head>
+  <body>
+    <!-- react渲染的模板插入的DOM节点容器 -->
+    <div id="container"></div>
+  </body>
+
+  <!-- 在React开发中，使用JSX，跟JS不兼容，在使用JSX的地方要设置type为text/babel -->
+  <!-- babel是一个转换编译器，ES6转成可以在浏览器中运行的代码 -->
+  <!-- react渲染的内容会插入到指定的DOM节点中 -->
+  <script type="text/babel">
+    //react编写区域
+
+    /*
+      事件处理
+
+      react中事件名称：首字母小写，驼峰命名法
+    */
+    // var MyButton = React.createClass({
+    //   handleClick: function() {
+    //     alert("点击成功");
+    //   },
+    //   render: function() {
+    //     return (
+    //       <button onClick={this.handleClick}>{this.props.buttonTitle}</button>
+    //     );
+    //   }
+    // });
+    //
+    // ReactDOM.render(
+    //   <MyButton buttonTitle="点击" />,
+    //   document.getElementById("container")
+    // );
+
+    /*
+      state 状态
+      props 组件自身属性
+
+      this.state
+      当state发生变化时，会调用组件内部的render方法
+    */
+    // var CheckButton = React.createClass({
+    //   //定义初始状态
+    //   getInitialState: function() {
+    //     return {
+    //       //在对象中设置的属性，将会存储在state中
+    //       //默认状态：未选中
+    //       isCheck: false
+    //     }
+    //   },
+    //   //定义事件绑定的方法
+    //   handleChange: function() {
+    //     //修改状态值，通过this.state读取设置的状态值
+    //     this.setState({
+    //       isCheck: !this.state.isCheck
+    //     });
+    //   },
+    //   render: function() {
+    //     //根据状态值，设置显示的文字
+    //     //在JSX中，不能直接使用if，而是使用三目运算符
+    //     var text = this.state.isCheck ? "已选中" : "未选中";
+    //     return (
+    //       <div>
+    //         <input type="checkbox" onChange={this.handleChange} />
+    //         {text}
+    //       </div>
+    //     );
+    //   }
+    // });
+    //
+    // ReactDOM.render(
+    //   <CheckButton />,
+    //   document.getElementById("container")
+    // );
+
+    var Input = React.createClass({
+      getInitialState: function() {
+        return {
+          value: "请输入"
+        };
+      },
+      handleChange: function(event) {
+        //通过event.target.value读取用户输入的值
+        this.setState({
+          value: event.target.value
+        });
+      },
+      render: function() {
+        var value = this.state.value;
+        return (
+          <div>
+            <input type="text" value={value} onChange={this.handleChange}/>
+            <p>{value}</p>
+          </div>
+        );
+      }
+    });
+
+    ReactDOM.render(
+      <Input />,
+      document.getElementById("container")
+    );
+  </script>
+</html>

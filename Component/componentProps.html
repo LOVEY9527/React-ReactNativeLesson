@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- React的核心库 -->
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <!-- 提供与Dom相关功能 -->
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <!-- 作用是将JSX语法转换为JavaScript语法 -->
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+
+  </head>
+  <body>
+    <!-- react渲染的模板插入的DOM节点容器 -->
+    <div id="container"></div>
+  </body>
+
+  <!-- 在React开发中，使用JSX，跟JS不兼容，在使用JSX的地方要设置type为text/babel -->
+  <!-- babel是一个转换编译器，ES6转成可以在浏览器中运行的代码 -->
+  <!-- react渲染的内容会插入到指定的DOM节点中 -->
+  <script type="text/babel">
+    //react编写区域
+
+    /*
+      props是组件自身的属性，一般用于嵌套的内外层组件中，负责传递信息(通常由父层组件向子层组件传递)
+      注意：props对象的属性与组件的属性一一对应，不要直接去修改props中属性值
+    */
+    //1.this.props的使用
+    // var WebName = React.createClass({
+    //   render: function() {
+    //     return <h1>{this.props.webname}</h1>;
+    //   }
+    // });
+    // var WebLink = React.createClass({
+    //   render: function() {
+    //     return <a href={this.props.weblink}>{this.props.weblink}</a>;
+    //   }
+    // });
+    // var WebShow = React.createClass({
+    //   render: function() {
+    //     return (
+    //       <div>
+    //         <WebName webname={this.props.wname}/>
+    //         <WebLink weblink={this.props.wlink}/>
+    //       </div>
+    //     );
+    //   }
+    // });
+    // ReactDOM.render(
+    //   <WebShow wname="lovey" wlink="https://www.jianshu.com/u/c5a2036fd58a"/>,
+    //   document.getElementById("container")
+    // );
+
+    /*
+      2.   ...this.props
+      props提供的语法糖，可以将父组件中的全部属性都复制给子组件
+    */
+    // var Link = React.createClass({
+    //   render: function() {
+    //     return (<a {...this.props}>{this.props.name}</a>);
+    //   }
+    // });
+    // ReactDOM.render(
+    //   <Link href="https://www.jianshu.com/u/c5a2036fd58a" name="lovey"/>,
+    //   document.getElementById("container")
+    // );
+
+    /*
+      3. this.props.children
+      children是一个例外，不是跟组件的属性对应的。
+      children表示组件所有的子节点
+
+      html5中有一种标签：列表 <ul> <ol> <li>
+    */
+    // var ListComponent = React.createClass({
+    //   render: function() {
+    //     return (
+    //       <ul>
+    //         {
+    //           /*
+    //             列表项数量以及内容不确定，在创建模板时才确定
+    //             使用this.props.children从父组件获取列表项内容
+    //
+    //             获取到列表项内容后，需要遍历children，逐项进行设置
+    //             使用React.Children.map方法
+    //             返回值：数组对象，这里数组中的元素是<li>
+    //           */
+    //             React.Children.map(
+    //               this.props.children,
+    //               function(child) {
+    //                 //child是遍历得到的父组件的子节点
+    //                 return <li>{child}</li>;
+    //               }
+    //             )
+    //         }
+    //       </ul>
+    //     );
+    //   }
+    // });
+    //
+    // ReactDOM.render(
+    //   (
+    //     <ListComponent>
+    //       <h1>lovey</h1>
+    //       <a href="https://www.jianshu.com/u/c5a2036fd58a">https://www.jianshu.com/u/c5a2036fd58a</a>
+    //     </ListComponent>
+    //   ),
+    //   document.getElementById("container")
+    // );
+
+    /*
+      4.属性验证 propTypes
+
+      组件类的属性
+      用于验证组件实例的属性是否符合要求
+    */
+    // var ShowTitle = React.createClass({
+    //   propTypes:{
+    //     //title数据必须为字符串
+    //     title: React.PropTypes.string.isRequired
+    //   },
+    //   render: function() {
+    //     return <h1>{this.props.title}</h1>
+    //   }
+    // });
+    //
+    // ReactDOM.render(
+    //   <ShowTitle title="123"/>,
+    //   document.getElementById("container")
+    // );
+
+    /*
+      设置组件属性的默认值
+
+      通过实现组件的getDefaultProps方法，对属性设置默认值
+    */
+    var MyTitle = React.createClass({
+      getDefaultProps: function() {
+        return {
+          title: "Lovey123"
+        };
+      },
+      render: function() {
+        return (
+          <h1>{this.props.title}</h1>
+        );
+      }
+    });
+
+    ReactDOM.render(
+      <MyTitle />,
+      document.getElementById("container")
+    );
+
+  </script>
+</html>
