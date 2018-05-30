@@ -1,0 +1,53 @@
+{
+  "code": "2000",
+  "data": {
+    "AllHouseList": [
+      {
+        "remark": "灵敏",
+        "userAdress": "江苏南京",
+        "userHeadPic": "http://qimg.app.eachonline.com/lc_defalut.jpg",
+        "userId": "0f4bb44afb2e48d48b786d3bbdeec283",
+        "userNickName": "huhhh",
+        "userType": "生活服务"
+      },
+      {
+        "remark": "啊啦啦啦具体啦吧啦啦啦",
+        "userAdress": "江西省南昌市东湖区",
+        "userHeadPic": "http://qimg.app.eachonline.com/lc_defalut.jpg",
+        "userId": "ade4c18e45124677a2c57f7de93d98d2",
+        "userNickName": "鬼故事",
+        "userType": "休闲娱乐"
+      },
+      {
+        "remark": "黄昏",
+        "userAdress": "河北省石家庄市长安区",
+        "userHeadPic": "http://qimg.app.eachonline.com/0301951c60a44b15bc388b83dbeb1e4f/c3dd8c6f4b0041dc9a4558ee10a0bb7b",
+        "userId": "0301951c60a44b15bc388b83dbeb1e4f",
+        "userNickName": "敬业福",
+        "userType": "休闲娱乐"
+      },
+      {
+        "remark": "",
+        "userAdress": "江苏省常州市天宁区",
+        "userHeadPic": "http://qimg.app.eachonline.com/lc_defalut.jpg",
+        "userId": "a6d7ed0ba751437bae1bbeee709cd344",
+        "userNickName": "unfortunately",
+        "userType": "房产服务"
+      },
+      {
+        "remark": "",
+        "userAdress": "湖南省长沙市芙蓉区",
+        "userHeadPic": "http://qimg.app.eachonline.com/lc_defalut.jpg",
+        "userId": "B910DF2E89CFA165F43EA1C20FCB130D",
+        "userNickName": "歼击机飞行员",
+        "userType": "共享生活"
+      }
+    ],
+    "count": 5
+  },
+  "extraData": {},
+  "message": "",
+  "module": null,
+  "recordCount": 0,
+  "success": true
+}
