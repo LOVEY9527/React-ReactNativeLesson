@@ -27,7 +27,8 @@ var RNImage = React.createClass({
           <Image
             style={imageStyle.localImage}
             // source={require("image!homeEhelperCommodityWholesaleIcon")}
-            source={{uri:"pic_bg"}}
+            // source={{uri:"pic_bg"}}
+            source={require('./RN控件生命周期.jpeg')}
             resizeMode="cover"
           />
         </View>
