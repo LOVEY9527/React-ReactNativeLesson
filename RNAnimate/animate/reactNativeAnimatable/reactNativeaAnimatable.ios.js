@@ -25,6 +25,11 @@ const COLORS = [
 const NATIVE_INCOMPATIBLE_ANIMATIONS = ['jello', 'lightSpeedIn', 'lightSpeedOut'];
 
 export default class RNAnimatable extends Component {
+    _keyExtractor = (item,index) => {
+        console.log(item+index);
+        return item+index;
+    }
+
     _renderItem = ({item, index}) => {
         return (
             <AnimatableCell
@@ -37,14 +42,16 @@ export default class RNAnimatable extends Component {
 
     _renderSectionHeader = ({section}) => {
         return (
-            <View style={{
+            <View
+                // id={section}
+                style={{
                 backgroundColor: '#F5FCFF',
                 padding: 15,
             }}>
                 <Text style={{
                     textAlign: 'center',
                     fontSize: 18,
-                }}>{section.title}</Text>
+                }}>{section.key}</Text>
             </View>
         );
     }
@@ -53,7 +60,8 @@ export default class RNAnimatable extends Component {
         return (
             <SectionList
                 automaticallyAdjustContentInsets={false}
-                keyExtractor={item => item}
+                keyExtractor = {this._keyExtractor}
+                // keyExtractor={this._keyExtractor}
                 renderItem={this._renderItem}
                 renderSectionHeader={this._renderSectionHeader}
                 sections={SectionDataSource}

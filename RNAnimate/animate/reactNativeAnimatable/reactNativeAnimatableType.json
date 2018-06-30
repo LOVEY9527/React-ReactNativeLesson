@@ -1,6 +1,6 @@
 [
   {
-    "title": "Attention Seekers",
+    "key": "Attention Seekers",
     "data": [
       "bounce",
       "flash",
@@ -15,15 +15,15 @@
     ]
   },
   {
-    "title": "Bouncing Entrances",
+    "key": "Bouncing Entrances",
     "data": ["bounceIn", "bounceInDown", "bounceInUp", "bounceInLeft", "bounceInRight"]
   },
   {
-    "title": "Bouncing Exits",
+    "key": "Bouncing Exits",
     "data": ["bounceOut", "bounceOutDown", "bounceOutUp", "bounceOutLeft", "bounceOutRight"]
   },
   {
-    "title": "Fading Entrances",
+    "key": "Fading Entrances",
     "data": [
       "fadeIn",
       "fadeInDown",
@@ -37,7 +37,7 @@
     ]
   },
   {
-    "title": "Fading Exits",
+    "key": "Fading Exits",
     "data": [
       "fadeOut",
       "fadeOutDown",
@@ -51,27 +51,27 @@
     ]
   },
   {
-    "title": "Flippers",
+    "key": "Flippers",
     "data": ["flipInX", "flipInY", "flipOutX", "flipOutY"]
   },
   {
-    "title": "Lightspeed",
+    "key": "Lightspeed",
     "data": ["lightSpeedIn", "lightSpeedOut"]
   },
   {
-    "title": "Sliding Entrances",
+    "key": "Sliding Entrances",
     "data": ["slideInDown", "slideInUp", "slideInLeft", "slideInRight"]
   },
   {
-    "title": "Sliding Exits",
+    "key": "Sliding Exits",
     "data": ["slideOutDown", "slideOutUp", "slideOutLeft", "slideOutRight"]
   },
   {
-    "title": "Zooming Entrances",
+    "key": "Zooming Entrances",
     "data": ["zoomIn", "zoomInDown", "zoomInUp", "zoomInLeft", "zoomInRight"]
   },
   {
-    "title": "Zooming Exits",
+    "key": "Zooming Exits",
     "data": ["zoomOut", "zoomOutDown", "zoomOutUp", "zoomOutLeft", "zoomOutRight"]
   }
 ]
