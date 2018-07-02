@@ -19,12 +19,12 @@ export default class RNAnimatableNormal extends Component {
         }
     }
 
-    _onAnimationBegin = () => {
-        console.log(this.animatedView);
-    }
+    // _onAnimationBegin = () => {
+    //     console.log(this.animatedView);
+    // }
 
     _onAnimationEnd = () => {
-        console.log(this.animatedView);
+        // console.log(this.animatedView);
         this.animatedView.animate("fadeOutLeftBig")
     }
 
@@ -65,7 +65,7 @@ export default class RNAnimatableNormal extends Component {
                     animation="fadeInRightBig"
                     delay={500}
                     //动画开始回调
-                    onAnimationBegin={this._onAnimationBegin}
+                    // onAnimationBegin={this._onAnimationBegin}
                     //动画结束回调
                     onAnimationEnd={this._onAnimationEnd}
                     style={{
