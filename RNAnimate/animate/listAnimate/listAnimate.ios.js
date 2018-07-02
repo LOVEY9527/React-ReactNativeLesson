@@ -4,10 +4,16 @@ import {
     View,
     FlatList,
     Text,
-    Animated
+    Animated,
+    Dimensions
 } from 'react-native';
-
 import RNListItem from './listItem.ios'
+import DeviceInfo from 'react-native-device-info'
+
+var systemVerson = parseInt(DeviceInfo.getSystemVersion())
+var screenHeight = Dimensions.get('window').height - 64
+var cellHeight = 64
+var maxScreenCellNum = Math.ceil(screenHeight / cellHeight)
 
 export default class RNListAnimate extends Component{
 
@@ -19,6 +25,8 @@ export default class RNListAnimate extends Component{
                 item={item}
                 index={index}
                 animateType={this.props.animateType}
+                cellHeight={cellHeight}
+                maxScreenCellNum={maxScreenCellNum}
             />
         )
     }
@@ -46,11 +54,11 @@ export default class RNListAnimate extends Component{
             <FlatList
                 style={{
                     flex: 1,
-                    // marginTop: -64
                 }}
-                automaticallyAdjustContentInsets={false}
+                automaticallyAdjustContentInsets={systemVerson < 11}
                 data={dataSource}
-                initialNumToRender={15}
+                initialNumToRender={maxScreenCellNum}
+                maxToRenderPerBatch={maxScreenCellNum}
                 renderItem={this._renderItem}
                 ItemSeparatorComponent={this._itemSeparatorComponent}
                 onScroll={this._onScroll}

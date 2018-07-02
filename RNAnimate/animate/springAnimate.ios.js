@@ -32,8 +32,8 @@ export default class RNSpringAnimate extends Component {
       this.state.springAnimateWidth,
       {
         toValue: 150,
-        tension: this.state.tensionSliderValue, //张力系数，默认7
-        friction: this.state.frictionSliderValue, //摩擦系数，默认40
+        tension: this.state.tensionSliderValue, //张力系数，默认40
+        friction: this.state.frictionSliderValue, //摩擦系数，默认7
       }
     ).start();
     Animated.spring(

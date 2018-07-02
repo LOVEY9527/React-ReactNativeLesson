@@ -7,7 +7,7 @@ import {
     Dimensions
 } from 'react-native';
 
-var ScreenWidth = Dimensions.get('window').width;
+var screenWidth = Dimensions.get('window').width;
 
 export default class RNListItem extends Component {
     constructor() {
@@ -20,11 +20,8 @@ export default class RNListItem extends Component {
 
     componentDidMount() {
         var animateDuration = 500
-        // var delayTime = 0
-        // if ((this.props.animateType === "translate") ||
-        //     (this.props.animateType === "rotateX")) {
-        var delayTime = this.props.index * 100
-        // }
+        //以一屏幕显示的最大数量的cell为周期，周期中的第一个cell动画延迟0秒，以100倍向上增长，最后周期中最后一个cell
+        var delayTime = (this.props.index % this.props.maxScreenCellNum) * 100
         Animated.timing(
             this.state.animateValue,
             {
@@ -41,11 +38,12 @@ export default class RNListItem extends Component {
                 <Animated.View style={[
                     styles.contrainer,
                     {
+                        height: this.props.cellHeight,
                         opacity: this.state.animateValue,
                         //移动
                         transform: [{translateX: this.state.animateValue.interpolate({
                                 inputRange: [0, 1],
-                                outputRange: [ScreenWidth, 0]
+                                outputRange: [screenWidth, 0]
                             })}]
                     }
                     ]}>
@@ -62,6 +60,7 @@ export default class RNListItem extends Component {
                 <Animated.View style={[
                     styles.contrainer,
                     {
+                        height: this.props.cellHeight,
                         opacity: this.state.animateValue,
                         //缩放
                         transform:[{scale: this.state.animateValue}]
@@ -80,6 +79,7 @@ export default class RNListItem extends Component {
                 <Animated.View style={[
                     styles.contrainer,
                     {
+                        height: this.props.cellHeight,
                         opacity: this.state.animateValue,
                         //旋转
                         transform: [{rotateX: this.state.animateValue.interpolate({
@@ -102,7 +102,6 @@ export default class RNListItem extends Component {
 
 var styles = StyleSheet.create({
     contrainer: {
-        height: 44,
         backgroundColor: "red",
         justifyContent: "center",
         alignItems: "center",
