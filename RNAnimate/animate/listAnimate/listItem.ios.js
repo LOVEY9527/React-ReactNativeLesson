@@ -50,7 +50,8 @@ export default class RNListItem extends Component {
                     }
                     ]}>
                     <Text style={{
-                        fontSize: 15
+                        fontSize: 15,
+                        color: "white"
                     }}>
                         第{this.props.item.key}行
                     </Text>
@@ -67,7 +68,8 @@ export default class RNListItem extends Component {
                     }
                     ]}>
                     <Text style={{
-                        fontSize: 15
+                        fontSize: 15,
+                        color: "white"
                     }}>
                         第{this.props.item.key}行
                     </Text>
@@ -87,7 +89,8 @@ export default class RNListItem extends Component {
                     }
                     ]}>
                     <Text style={{
-                        fontSize: 15
+                        fontSize: 15,
+                        color: "white"
                     }}>
                         第{this.props.item.key}行
                     </Text>

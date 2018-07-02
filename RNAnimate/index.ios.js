@@ -18,7 +18,7 @@ import RNTimingAnimate from './animate/timingAnimate/timingAnimate.ios';
 import RNSpringAnimate from './animate/springAnimate.ios';
 import RNDecayAnimate from './animate/decayAnimate.ios';
 import RNListAnimateHome from './animate/listAnimate/listAnimateHome.ios';
-import RNAnimateble from './animate/reactNativeAnimatable/reactNativeaAnimatable'
+import RNAnimatebleHome from './animate/reactNativeAnimatable/reactNativeAnimatableHome.ios'
 
 class RNAnimate extends Component {
   render() {
@@ -80,7 +80,7 @@ class RNRootView extends Component {
       })
     }else if (clickIndex === 4){
       this.props.navigator.push({
-          component: RNAnimateble,
+          component: RNAnimatebleHome,
           title: "react-native-animatable",
       })
     }
