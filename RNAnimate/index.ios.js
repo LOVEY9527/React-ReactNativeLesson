@@ -17,6 +17,7 @@ import {
 import RNTimingAnimate from './animate/timingAnimate/timingAnimate.ios';
 import RNSpringAnimate from './animate/springAnimate.ios';
 import RNDecayAnimate from './animate/decayAnimate.ios';
+import RNAnimationGroup from './animate/animationGroup/animationGroup.ios'
 import RNListAnimateHome from './animate/listAnimate/listAnimateHome.ios';
 import RNAnimatebleHome from './animate/reactNativeAnimatable/reactNativeAnimatableHome.ios'
 
@@ -47,9 +48,12 @@ class RNRootView extends Component {
             <Text>decay动画</Text>
           </TouchableOpacity>
             <TouchableOpacity style={styles.touchableOpacityStyles} onPress={() => this.onClick(3)}>
-                <Text>List动画</Text>
+                <Text>组合动画</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.touchableOpacityStyles} onPress={() => this.onClick(4)}>
+                <Text>List动画</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.touchableOpacityStyles} onPress={() => this.onClick(5)}>
                 <Text>react-native-animatable</Text>
             </TouchableOpacity>
         </View>
@@ -75,14 +79,19 @@ class RNRootView extends Component {
       })
     }else if(clickIndex === 3){
       this.props.navigator.push({
-          component: RNListAnimateHome,
-          title: "list",
+          component: RNAnimationGroup,
+          title: "组合动画",
       })
     }else if (clickIndex === 4){
       this.props.navigator.push({
-          component: RNAnimatebleHome,
-          title: "react-native-animatable",
+          component: RNListAnimateHome,
+          title: "list",
       })
+    }else if (clickIndex === 5){
+        this.props.navigator.push({
+            component: RNAnimatebleHome,
+            title: "react-native-animatable",
+        })
     }
   }
 }

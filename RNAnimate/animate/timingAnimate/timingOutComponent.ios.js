@@ -49,7 +49,8 @@ export default class RNTimingOutComponent extends Component {
       }}>
         <Text style={{
           flex: 1,
-          textAlign: "center"
+          textAlign: "center",
+            color:"white"
         }}>out</Text>
       </Animated.View>
     );

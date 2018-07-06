@@ -52,7 +52,8 @@ export default class RNTimingLinearComponent extends Component {
       }}>
       <Text style={{
         flex: 1,
-        textAlign: "center"
+        textAlign: "center",
+          color:"white"
       }}>linear</Text>
       </Animated.View>
     );

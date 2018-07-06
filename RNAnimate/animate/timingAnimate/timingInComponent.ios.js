@@ -49,7 +49,8 @@ export default class RNTimingInComponent extends Component {
       }}>
         <Text style={{
           flex: 1,
-          textAlign: "center"
+          textAlign: "center",
+            color:"white"
         }}>in</Text>
       </Animated.View>
     );

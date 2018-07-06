@@ -34,6 +34,7 @@ export default class RNSpringAnimate extends Component {
         toValue: 150,
         tension: this.state.tensionSliderValue, //张力系数，默认40
         friction: this.state.frictionSliderValue, //摩擦系数，默认7
+        // useNativeDriver: true
       }
     ).start();
     Animated.spring(
@@ -42,6 +43,7 @@ export default class RNSpringAnimate extends Component {
         toValue: 40,
         tension: this.state.tensionSliderValue,
         friction: this.state.frictionSliderValue,
+          // useNativeDriver: true
       }
     ).start()
   }
