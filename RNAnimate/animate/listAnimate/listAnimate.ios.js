@@ -16,17 +16,34 @@ var cellHeight = 64
 var maxScreenCellNum = Math.ceil(screenHeight / cellHeight)
 
 export default class RNListAnimate extends Component{
+    dataSource=[]
+
+    constructor(props) {
+        super(props)
+
+        var shouldShowAnimatedArray = []
+        for(var index=0; index<17; index++){
+            this.dataSource.push({key: index})
+            shouldShowAnimatedArray.push(false)
+        }
+
+        this.state = {
+            shouldShowAnimatedArray: shouldShowAnimatedArray
+        }
+    }
 
     _renderItem = ({item, index}) => {
-        console.log(index);
         return (
             <RNListItem
+                key={index}
                 id={index}
                 item={item}
                 index={index}
                 animateType={this.props.animateType}
                 cellHeight={cellHeight}
                 maxScreenCellNum={maxScreenCellNum}
+                shouldShowAnimated={this.state.shouldShowAnimatedArray[index]}
+                shouldAnimateAllTime={this.props.shouldAnimateAllTime}
             />
         )
     }
@@ -40,70 +57,37 @@ export default class RNListAnimate extends Component{
         );
     }
 
-    _onScroll = () => {
-        console.log("scrolling");
+    _onViewableItemsChanged = ({viewableItems, changed}) => {
+        for (var index = 0; index < changed.length; index++) {
+            var changedInfo = changed[index];
+            if (changedInfo.index < this.state.shouldShowAnimatedArray.length) {
+                var shouldShowAnimatedArray = this.state.shouldShowAnimatedArray
+                shouldShowAnimatedArray[changedInfo.index] = changedInfo.isViewable
+                this.setState({
+                    shouldShowAnimatedArray: shouldShowAnimatedArray
+                })
+            }
+        }
+        // console.log(viewableItems);
+        // console.log(changed);
     }
 
     render() {
-        var dataSource=[]
-        for(var index=0; index<20; index++){
-            dataSource.push({key: index})
-        }
-
         return (
             <FlatList
                 style={{
                     flex: 1,
+                    marginTop: 64
                 }}
                 automaticallyAdjustContentInsets={systemVerson < 11}
-                data={dataSource}
+                data={this.dataSource}
                 initialNumToRender={maxScreenCellNum}
                 maxToRenderPerBatch={maxScreenCellNum}
                 renderItem={this._renderItem}
                 ItemSeparatorComponent={this._itemSeparatorComponent}
                 onScroll={this._onScroll}
+                onViewableItemsChanged={this._onViewableItemsChanged}
             />
         )
     }
-
-//     constructor() {
-//         super()
-//
-//         this.state = {
-//             animateValue: new Animated.Value(0),
-//         }
-//     }
-//
-//     componentDidMount() {
-//         Animated.timing(
-//             this.state.animateValue,
-//             {
-//                 toValue: 1,
-//                 duration: 2500
-//             }
-//         ).start()
-//     }
-//
-//     render() {
-//         return(
-//             <View style={{
-//                 flex: 1,
-//                 marginTop: 64,
-//             }}>
-//                 <Text>sequence/delay/stagger/parallel演示</Text>
-//                 <Animated.View
-//                     style={{
-//                         backgroundColor: 'red',
-//                         width: 150,
-//                         height: 40,
-//                         left: this.state.animateValue.interpolate({
-//                             inputRange: [0,1],
-//                             outputRange: [0,200]
-//                         })
-//                     }}>
-//                     <Text style={{fontSize: 14}}>我是第1个View</Text>
-//                 </Animated.View>
-//             </View>
-//         );
-//     }
 }
