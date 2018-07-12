@@ -20,22 +20,9 @@ export default class RNListItem extends Component {
         }
     }
 
-    componentDidMount() {
-        if (this.props.shouldAnimateAllTime) {
-            if (this.props.shouldShowAnimated ) {
-                this.startShowAnimate()
-            }
-        } else {
-            this.startShowAnimate()
-        }
-    }
-
     shouldComponentUpdate(nextProps, nextState ) {
-        if (this.props.shouldAnimateAllTime) {
-            return this.props.shouldShowAnimated != nextProps.shouldShowAnimated;
-        }
-
-        return false
+        //如果nextProps.shouldShowAnimated和this.props.shouldShowAnimated一致的话就不需要重新渲染了
+        return this.props.shouldShowAnimated != nextProps.shouldShowAnimated;
     }
 
     componentDidUpdate() {
@@ -54,8 +41,9 @@ export default class RNListItem extends Component {
         this.isAnimating = true
 
         var animateDuration = 500
+        //取消动画延迟
         //以一屏幕显示的最大数量的cell为周期，周期中的第一个cell动画延迟0秒，以100倍向上增长，最后周期中最后一个cell
-        var delayTime = (this.props.index % this.props.maxScreenCellNum) * 100
+        // var delayTime = (this.props.index % this.props.maxScreenCellNum) * 100
 
         Animated.timing(
             this.state.animateValue,
@@ -72,11 +60,13 @@ export default class RNListItem extends Component {
     startHideAnimate() {
         this.isAnimating = true
 
+        //隐藏动画的时间设为0的话，在列表滑动较快的时候动画效果更加衔接
+        var animateDuration = 0
         Animated.timing(
             this.state.animateValue,
             {
                 toValue: 0,
-                duration: 500,
+                duration: animateDuration,
             }
         ).start(success => {
             this.isAnimating = false;
